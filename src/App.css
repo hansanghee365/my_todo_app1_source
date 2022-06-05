@@ -1,38 +1,156 @@
-.App {
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  padding: 0;
+  margin: 0;
+  background: rgb(5, 37, 75);
+  /* height: 100vh; */
+  /* overflow: hidden; */
+  
+}
+.container{
+  width: 100vw;
+  margin: 0px auto 0;
+  background: rgb(255, 255, 255);
+  max-width: 480px;
+  padding-top: 20px;
+  border-radius: 5px;
+  position: relative;
+  height: 100;
+  display: block;
+  height: 100vh;
+}
+header{
   text-align: center;
+  color: rgb(5, 37, 75);
+  z-index: 100;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title h2{
+  font-size: 2rem;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+article{
+  width: 90%;
+  margin: 0 auto;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  font-weight: bold;
+  z-index: 100;
+  background-color: #fff;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.todoList .todo{
+  background: rgb(226, 109, 80);
+  padding: 20px 10px;
+  margin: 10px auto;
+  position: relative;
+  border-radius: 6px;
+  box-shadow: 0px 0px 1px 1px rgb(237, 170, 170);
+}
+.todoList .todo.check{
+  background: rgb(226, 109, 80);
+  padding: 20px 10px;
+  margin: 10px auto;
+  position: relative;
+  border-radius: 6px;
+  box-shadow: 0px 0px 1px 1px rgb(237, 170, 170);
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.todoList .todo.check .fa-check{
+  background: rgb(235, 165, 165);
+}
+.todoList .todo i{
+  color: black;
+}
+.todoList .button{
+  position: absolute;
+  right: 0;
+  top: 20px;
+}
+.todoList .button i{
+  margin-right: 20px;
+  background: #fff;
+  padding: 5px;
+  border-radius: 3px;
+}
+.todoList + .todoList{
+  margin-top: 10px;
+}
+.plus_button{
+  background: rgb(248, 191, 4);
+  color: rgb(255, 255, 255);
+  font-size: 40px;
+  padding: 15px;
+  position: absolute;
+  right: 30px;
+  display: fixed;
+  bottom: 40px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 50%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* .modal{
+  display: none;
+} */
+.modal{
+  display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  
 }
-
-.App-link {
-  color: #61dafb;
+.modal .background{
+  position: fixed;
+  background: rgb(19, 18, 25);
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.modal form{
+  z-index: 300;
+  background: #fff;
+  opacity: 1;
+  padding: 30px;
+  text-align: center;
+  position: fixed;
+  top: 20%;
+  z-index: 300;
+  /* display: flex; */
+  /* align-items: center; */
+}
+.modal form input{
+  display: block;
+  font-size: 1.5rem;
+  padding: 20px;
+  border: none;
+  border-bottom: 1px solid rgb(235, 165, 165);
+}
+.modal form .add{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  margin: 0 auto;
+  align-items: center;
+  font-size: 1.5rem;
+  line-height: 3rem;
+  border-radius: 50%;
+  background: rgb(226, 109, 80);
+}
+.modal form input{
+  margin-bottom: 20px;
+}
+.modal button{
+  border: none;
 }
