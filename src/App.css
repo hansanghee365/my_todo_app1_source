@@ -7,7 +7,7 @@ body{
   padding: 0;
   margin: 0;
   background: rgb(5, 37, 75);
-  /* height: 100vh; */
+  height: 100vh;
   /* overflow: hidden; */
   
 }
@@ -19,7 +19,6 @@ body{
   padding-top: 20px;
   border-radius: 5px;
   position: relative;
-  height: 100;
   display: block;
   height: 100vh;
 }
@@ -153,4 +152,12 @@ article{
 }
 .modal button{
   border: none;
+}
+@media screen and (max-width:500px) {
+  .container{
+    overflow: scroll;
+  }
+  .plus_button{
+    position: fixed;
+  }
 }
