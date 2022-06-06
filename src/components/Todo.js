@@ -1,13 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
+import { doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 export const Todo = ({todo,setTodos}) => {
   const id=todo.id;
   const checkToggle = ()=>{
-    setTodos(todos=>todos.map(todo=>(todo.id ===id?{...todo,completed:!todo.completed}:todo)))
+    updateDoc(doc(db, "todos", todo.id),{
+      completed: !todo.completed
+    })
   }
   const deleteTodo = ()=>{
-    setTodos(todos=>[...todos].filter(todo=>todo.id !==id));
+    deleteDoc(doc(db, "todos",id));
   }
   return (
     <div className={`todo ${todo.completed?'check':''}`}>

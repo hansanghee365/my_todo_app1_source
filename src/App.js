@@ -1,22 +1,38 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { TodoList } from './components/TodoList';
 import Plus from './components/Plus';
 import { Modal } from './components/Modal';
+import { db } from './firebase';
+import { collection, addDoc, onSnapshot, query } from 'firebase/firestore';
 
 function App() {
   const [plusToggle,setPlusToggle] = useState(false);
   // const toggleChange = setPlusToggle(plusToggle=>!plusToggle);
-  const [nextId,setNextId] = useState(3);
-  const [todos,setTodos] = useState([
-    {id:1,title:'プログラミング',completed:true},
-    {id:2,title:'プログラミング',completed:false},
-  ]);
-  const addTodo = title=>{
-    setTodos(todos=>[...todos,{id:nextId,title:title,completed:false}]);
-    setNextId(nextId+1);
+  const [todos,setTodos] = useState([]);
+  const addTodo = async (title)=>{
+    if(title !== ""){
+      await addDoc(collection(db, "todos"),{
+        title,
+        completed:false,
+      })
+    }
   }
+
+  useEffect(()=>{
+    const q = query(collection(db,'todos'));
+    return ( onSnapshot(q, (querySnapshot) =>{
+      let todosArray = [];
+      querySnapshot.forEach((doc) =>{
+        todosArray.push({ ...doc.data(), id: doc.id});        
+      })
+      setTodos(todosArray);
+      })
+    )
+  },[]);
+
+
   return (
     <div className="container">
     <Header todos={todos}/>

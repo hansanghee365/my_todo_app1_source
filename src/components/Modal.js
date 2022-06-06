@@ -9,13 +9,12 @@ export const Modal = ({plusToggle,setPlusToggle,addTodo}) => {
       </div>
       <form onSubmit={e=>{
         e.preventDefault();
-        console.log();
         const title = e.target.title.value;
         if(!title)return;
         addTodo(title);
         setPlusToggle(plusToggle=!plusToggle);
       }}>
-        <input type="text" name='title' placeholder='todoを入力！'/>
+        <input type="text" name='title' placeholder='todoを入力！' autoFocus/>
         <button type="submit" className="add">
           <i className="fa fa-plus"></i>
         </button>
